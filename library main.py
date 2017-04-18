@@ -12,6 +12,11 @@ class Borrower(object):
 	dvds = []
 	due_dates = []#books first then dvds
 
+class Book(object):
+	name = "String"
+	author = "String"
+	quantity = int
+
 shelf = {
 	"The Best in the World(at what I have no idea)": "Chris Jericho": 3,
 	"For Whom the Bells Toll":"Ernest Hemmingway": 2,
@@ -23,6 +28,7 @@ shelf = {
 
 def library(lib):
 	consumers = [Borrower]
+	shelf = [Book]
 	print "Welcome to the Library. Are you her to borrow, return, or donate? /n"
 	answer = raw_input
 	if answer == "Borrow":
@@ -65,3 +71,15 @@ def processReturn():
 	else: return
 
 def processDonate():
+	print "What would you like to donate?/n"
+	book = raw_input
+	if book in shelf:
+		book.quantity += 1
+	else:
+		print "Who is the author of this book?/n"
+		authro = raw_input
+		newb = new Book
+		newb.name = book
+		newb.author = authro
+		newb.quantity = 1
+		shelf.append(newb)
